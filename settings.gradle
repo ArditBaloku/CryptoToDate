@@ -1,0 +1,2 @@
+rootProject.name='CryptoToDate'
+include ':app'
