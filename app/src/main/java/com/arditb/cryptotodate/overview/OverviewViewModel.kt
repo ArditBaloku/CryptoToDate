@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.arditb.cryptotodate.network.CryptoApi
 import com.arditb.cryptotodate.network.CryptoApiService
+import com.arditb.cryptotodate.network.CryptoItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -12,7 +13,7 @@ import kotlinx.coroutines.launch
 
 enum class CryptoApiStatus { LOADING, ERROR, DONE }
 
-class OverviewViewModel : ViewModel(){
+class OverviewViewModel : ViewModel() {
 
     // The internal MutableLiveData String that stores the most recent response
     private val _status = MutableLiveData<CryptoApiStatus>()
@@ -22,9 +23,9 @@ class OverviewViewModel : ViewModel(){
         get() = _status
 
 
-    private val _properties = MutableLiveData<List<CryptoApiStatus>>()
+    private val _properties = MutableLiveData<List<CryptoItem>>()
 
-    val properties: LiveData<List<CryptoApiStatus>>
+    val properties: LiveData<List<CryptoItem>>
         get() = _properties
 
 
@@ -36,8 +37,20 @@ class OverviewViewModel : ViewModel(){
         getCryptoData()
     }
 
-    private fun getCryptoData(){
-        val one = 1
+    private fun getCryptoData() {
+        coroutineScope.launch {
+            var getCryptoDeferred = CryptoApi.retrofitService.getCurrencies()
+            try {
+                _status.value = CryptoApiStatus.LOADING
+                val listResult = getCryptoDeferred.await()
+                _status.value = CryptoApiStatus.DONE
+                _properties.value = listResult
+            } catch (e: Exception) {
+                _status.value = CryptoApiStatus.ERROR
+                _properties.value = ArrayList()
+            }
+        }
+
     }
 
     override fun onCleared() {
