@@ -5,16 +5,15 @@ import com.squareup.moshi.Json
 data class CryptoItem(
     val id: String,
     val currency: String,
-    val price: Double,
+    val price: String,
     @Json(name = "price_date") val priceDate: String,
     @Json(name = "price_timestamp") val priceTimestamp: String,
     val symbol: String,
-    @Json(name = "circulating_supply") val circulatingSupply: Int,
-    @Json(name = "max_supply") val maxSupply: Int,
+    @Json(name = "circulating_supply") val circulatingSupply: String,
     val name: String,
     @Json(name = "logo_url") val logoUrl: String,
-    @Json(name = "market_cap") val marketCap: Double,
-    val rank: Int,
-    val high: Double,
+    @Json(name = "market_cap") val marketCap: String,
+    val rank: String,
+    val high: String,
     @Json(name = "high_timestamp") val highTimestamp: String
 )

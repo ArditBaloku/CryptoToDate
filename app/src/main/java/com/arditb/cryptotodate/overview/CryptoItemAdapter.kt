@@ -1,32 +1,41 @@
 package com.arditb.cryptotodate.overview
 
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.arditb.cryptotodate.R
+import com.arditb.cryptotodate.databinding.CryptoItemBinding
 import com.arditb.cryptotodate.network.CryptoItem
 
-class CryptoItemAdapter : RecyclerView.Adapter<TextItemViewHolder>() {
-    var data = listOf<CryptoItem>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
+class CryptoItemAdapter : ListAdapter<CryptoItem, CryptoItemAdapter.CryptoItemViewHolder>(DiffCallback) {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CryptoItemViewHolder {
+        return CryptoItemViewHolder(CryptoItemBinding.inflate(LayoutInflater.from(parent.context)))
+    }
+
+    override fun onBindViewHolder(holder: CryptoItemViewHolder, position: Int) {
+        val cryptoItem = getItem(position)
+        holder.bind(cryptoItem)
+    }
+
+
+    companion object DiffCallback : DiffUtil.ItemCallback<CryptoItem>() {
+        override fun areItemsTheSame(oldItem: CryptoItem, newItem: CryptoItem): Boolean {
+            return oldItem == newItem
         }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TextItemViewHolder {
-         val layoutInflater = LayoutInflater.from(parent.context)
-         val view = layoutInflater.inflate(R.layout.crypto_item_template, parent, false) as TextView
-         return TextItemViewHolder(view)
+        override fun areContentsTheSame(oldItem: CryptoItem, newItem: CryptoItem): Boolean {
+            return oldItem.id == newItem.id
+        }
     }
 
-    override fun getItemCount(): Int = data.size
-
-    override fun onBindViewHolder(holder: TextItemViewHolder, position: Int) {
-         val item = data[position]
-         holder.textView.text = item.name
+    class CryptoItemViewHolder(private var binding: CryptoItemBinding ) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(cryptoItem: CryptoItem) {
+            binding.crypto = cryptoItem
+            binding.executePendingBindings()
+        }
     }
-
 }
 
-class TextItemViewHolder(val textView: TextView): RecyclerView.ViewHolder(textView)

@@ -28,16 +28,12 @@ class OverviewFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = FragmentOverviewBinding.inflate(inflater)
+
         binding.setLifecycleOwner(this)
 
-        val adapter = CryptoItemAdapter()
-        binding.cryptoItemList.adapter = adapter
+        binding.viewModel = viewModel
 
-        viewModel.properties.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                adapter.data = it
-            }
-        })
+        binding.cryptoItemList.adapter = CryptoItemAdapter()
 
         return binding.root
     }
