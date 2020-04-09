@@ -1,0 +1,20 @@
+package com.arditb.cryptotodate.network
+
+import com.squareup.moshi.Json
+
+data class CryptoItem(
+    val id: String,
+    val currency: String,
+    val price: Double,
+    @Json(name = "price_date") val priceDate: String,
+    @Json(name = "price_timestamp") val priceTimestamp: String,
+    val symbol: String,
+    @Json(name = "circulating_supply") val circulatingSupply: Int,
+    @Json(name = "max_supply") val maxSupply: Int,
+    val name: String,
+    @Json(name = "logo_url") val logoUrl: String,
+    @Json(name = "market_cap") val marketCap: Double,
+    val rank: Int,
+    val high: Double,
+    @Json(name = "high_timestamp") val highTimestamp: String
+)
