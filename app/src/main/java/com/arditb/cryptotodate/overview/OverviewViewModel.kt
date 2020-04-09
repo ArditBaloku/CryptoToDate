@@ -45,10 +45,8 @@ class OverviewViewModel : ViewModel() {
                 val listResult = getCryptoDeferred.await()
                 _status.value = CryptoApiStatus.DONE
                 _properties.value = listResult
-                Log.i("internet", listResult[0].name)
             } catch (e: Exception) {
                 _status.value = CryptoApiStatus.ERROR
-                Log.i("internet", e.toString())
                 _properties.value = ArrayList()
             }
         }

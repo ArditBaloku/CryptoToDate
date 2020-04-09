@@ -21,11 +21,14 @@
             android:layout_weight="1"
             android:text="@{crypto.name}" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@{crypto.logoUrl}"/>
+        <ImageView
+            android:id="@+id/mars_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:padding="2dp"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{crypto.logoUrl}"
+            tools:src="@tools:sample/backgrounds/scenic" />
     </LinearLayout>
 </layout>

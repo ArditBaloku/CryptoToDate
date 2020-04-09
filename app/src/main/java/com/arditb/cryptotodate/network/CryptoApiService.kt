@@ -9,7 +9,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
 private const val BASE_URL = "https://api.nomics.com/v1/"
-private const val API_KEY = "a4cf16806da94f462462ce5f1b7e598b2"
+private const val API_KEY = "4cf16806da94f462462ce5f1b7e598b2"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -22,7 +22,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface CryptoApiService {
-    @GET("currencies/ticker?key=4cf16806da94f462462ce5f1b7e598b2&ids=BTC,ETH,XRP&interval=1d,30d&convert=EUR")
+    @GET("currencies/ticker?key=${API_KEY}&ids=BTC,ETH,XRP&interval=1d,30d&convert=EUR")
     fun getCurrencies():  Deferred<List<CryptoItem>>
 }
 
