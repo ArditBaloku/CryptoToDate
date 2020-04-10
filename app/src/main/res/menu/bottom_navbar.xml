@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/currency_list"
+        android:title="Currencies"
+        android:icon="@drawable/ic_attach_money_black_24dp"/>
+
+    <item
+        android:id="@+id/search"
+        android:title="Search"
+        android:icon="@drawable/ic_search_black_24dp"/>
+
+    <item
+        android:id="@+id/converter"
+        android:title="Converter"
+        android:icon="@drawable/ic_autorenew_black_24dp"/>
+
+    <item
+        android:id="@+id/other"
+        android:title="Other"
+        android:icon="@drawable/ic_dashboard_black_24dp"/>
+
+    <item
+        android:id="@+id/settings"
+        android:title="Settings"
+        android:icon="@drawable/ic_dehaze_black_24dp"/>
+</menu>

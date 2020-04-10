@@ -22,7 +22,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface CryptoApiService {
-    @GET("currencies/ticker?key=${API_KEY}&ids=BTC,ETH,XRP&interval=1d,30d&convert=EUR")
+    @GET("currencies/ticker?key=${API_KEY}&ids=BTC,ETH,XRP,USDT,BCH,BSV,LTC,EOS,BNB,ETNX,XTZ,OKB,LINK,ADA,LEOTOKEN,XLM,XMR&interval=1d,30d&convert=EUR")
     fun getCurrencies():  Deferred<List<CryptoItem>>
 }
 
