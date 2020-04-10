@@ -1,29 +1,25 @@
 package com.arditb.cryptotodate.utils
 
+import android.net.Uri
 import android.view.View
 import android.widget.ImageView
-import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.arditb.cryptotodate.R
 import com.arditb.cryptotodate.network.CryptoItem
 import com.arditb.cryptotodate.overview.CryptoApiStatus
 import com.arditb.cryptotodate.overview.CryptoItemAdapter
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
 
 
 @BindingAdapter("imageUrl")
 fun bindImage(imageView: ImageView, imageUrl: String?) {
     imageUrl?.let {
-        val imageUri = it.toUri().buildUpon().scheme("https").build()
-        Glide.with(imageView.context)
-            .load(imageUri)
-            .apply(
-                RequestOptions()
-                    .placeholder(R.drawable.loading_animation)
-                    .error(R.drawable.ic_broken_image))
-            .into(imageView)
+        GlideToVectorYou
+            .init()
+            .with(imageView.context)
+            .setPlaceHolder(R.drawable.loading_animation, R.drawable.ic_broken_image)
+            .load(Uri.parse(imageUrl), imageView)
     }
 }
 
