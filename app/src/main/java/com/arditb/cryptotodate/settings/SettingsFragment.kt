@@ -26,13 +26,20 @@ class SettingsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_settings, container, false)
-//        val spinner = view.currenciesSpinner
-//        ArrayAdapter.createFromResource(this
-//            ,R.array.currencies,android.R.layout.simple_spinner_item)
-//            .also { adapter ->
-//                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//                spinner.adapter = adapter
-//            }
+        val currenciesSpinner = view.currenciesSpinner
+        ArrayAdapter.createFromResource(context!!
+            ,R.array.currencies,android.R.layout.simple_spinner_item)
+            .also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                currenciesSpinner.adapter = adapter
+            }
+        val languagesSpinner = view.languagesSpinner
+        ArrayAdapter.createFromResource(context!!
+            ,R.array.currencies,android.R.layout.simple_spinner_item)
+            .also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                languagesSpinner.adapter = adapter
+            }
         return view
     }
 }
