@@ -63,11 +63,23 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="48dp"
             android:textSize="20dp"/>
-==/>
-<!--       <CheckBox-->
-<!--           android:layout_width="wrap_content"-->
-<!--           android:layout_height="wrap_content"-->
-<!--           android:layout_marginEnd="48dp"/>-->
+
 
     </LinearLayout>
+    <TextView
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text=""
+        android:id="@+id/resultSpinner"/>
+    <TextView
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text=""
+        android:id="@+id/resultLanguages"/>
 </LinearLayout>
