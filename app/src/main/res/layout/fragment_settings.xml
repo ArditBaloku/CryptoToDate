@@ -20,7 +20,6 @@
            android:text="Currency: "/>
 
        <Spinner
-           android:layout_weight="1"
            android:layout_marginEnd="40dp"
            android:id="@+id/currenciesSpinner"
            android:layout_width="wrap_content"
@@ -31,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="40dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,9 +39,8 @@
             android:text="Language: "/>
 
         <Spinner
-            android:layout_weight="1"
-            android:layout_marginEnd="40dp"
             android:id="@+id/languagesSpinner"
+            android:layout_marginEnd="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -51,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="40dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,13 +57,17 @@
             android:layout_weight="1"
             android:text="Dark Theme: "/>
 
-       <CheckBox
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginEnd="45dp"/>
+        <Switch
+            android:id="@+id/darkTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            android:textSize="20dp"/>
+==/>
+<!--       <CheckBox-->
+<!--           android:layout_width="wrap_content"-->
+<!--           android:layout_height="wrap_content"-->
+<!--           android:layout_marginEnd="48dp"/>-->
 
     </LinearLayout>
-
-
-
 </LinearLayout>

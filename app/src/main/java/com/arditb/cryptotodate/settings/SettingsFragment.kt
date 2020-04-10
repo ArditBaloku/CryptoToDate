@@ -35,7 +35,7 @@ class SettingsFragment : Fragment() {
             }
         val languagesSpinner = view.languagesSpinner
         ArrayAdapter.createFromResource(context!!
-            ,R.array.currencies,android.R.layout.simple_spinner_item)
+            ,R.array.languages,android.R.layout.simple_spinner_item)
             .also { adapter ->
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 languagesSpinner.adapter = adapter
