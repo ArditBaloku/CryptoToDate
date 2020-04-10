@@ -18,4 +18,5 @@
         <item>NO</item>
         <item>DE</item>
     </string-array>
+    <string name="price">%.2f</string>
 </resources>

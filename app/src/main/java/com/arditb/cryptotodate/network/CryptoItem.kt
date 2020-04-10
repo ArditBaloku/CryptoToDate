@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 data class CryptoItem(
     val id: String,
     val currency: String,
-    val price: String,
+    val price: Float,
     @Json(name = "price_date") val priceDate: String,
     @Json(name = "price_timestamp") val priceTimestamp: String,
     val symbol: String,
