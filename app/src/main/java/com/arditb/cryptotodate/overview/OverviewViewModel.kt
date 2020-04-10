@@ -1,9 +1,7 @@
 package com.arditb.cryptotodate.overview
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import com.arditb.cryptotodate.network.CryptoApi
 import com.arditb.cryptotodate.network.CryptoItem
 import kotlinx.coroutines.CoroutineScope
@@ -27,7 +25,6 @@ class OverviewViewModel : ViewModel() {
 
     val properties: LiveData<List<CryptoItem>>
         get() = _properties
-
 
     private var viewModelJob = Job()
 

@@ -76,6 +76,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
+    // Material design
+    implementation "com.google.android.material:material:$version_material_design"
+
 
     // Testing
     testImplementation 'junit:junit:4.13'
