@@ -99,8 +99,7 @@ class SettingsFragment : Fragment(){
 
     private fun getSavedCurrency(): String {
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return "USD"
-        val currency = sharedPref.getString(getString(R.string.currency_key), "USD") ?: "USD"
-        return currency
+        return sharedPref.getString(getString(R.string.currency_key), "USD") ?: "USD"
     }
 
     private fun getIndex(spinner: Spinner, myString: String): Int {
