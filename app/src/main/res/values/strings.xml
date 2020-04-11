@@ -12,6 +12,8 @@
         <item>AUD</item>
         <item>AOA</item>
         <item>ARS</item>
+        <item>USD</item>
+        <item>EUR</item>
     </string-array>
     <string-array name="languages">
         <item>EN</item>
