@@ -1,7 +1,10 @@
 package com.arditb.cryptotodate.network
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class CryptoItem(
     val id: String,
     val currency: String,
@@ -16,4 +19,4 @@ data class CryptoItem(
     val rank: String,
     val high: String,
     @Json(name = "high_timestamp") val highTimestamp: String
-)
+) : Parcelable{}

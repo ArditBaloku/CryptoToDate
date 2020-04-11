@@ -3,16 +3,13 @@ package com.arditb.cryptotodate.overview
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
-
-
+import androidx.navigation.fragment.findNavController
 import com.arditb.cryptotodate.R
+
+
 import com.arditb.cryptotodate.databinding.FragmentOverviewBinding
-import com.arditb.cryptotodate.network.CryptoItem
 
 
 /**
@@ -33,7 +30,17 @@ class OverviewFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        binding.cryptoItemList.adapter = CryptoItemAdapter()
+        binding.cryptoItemList.adapter = CryptoItemAdapter(CryptoItemAdapter.OnClickListener {
+            viewModel.displayCryptoDetails(it)
+        })
+
+        viewModel.navigateToSelectedCrypto.observe(this, Observer {
+            if (null != it) {
+                this.findNavController().navigate(OverviewFragmentDirections.actionShowDetail(it))
+                viewModel.displayCryptoDetailsComplete()
+            }
+        })
+
         return binding.root
     }
 }

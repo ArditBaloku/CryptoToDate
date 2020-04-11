@@ -26,6 +26,14 @@ class OverviewViewModel : ViewModel() {
     val properties: LiveData<List<CryptoItem>>
         get() = _properties
 
+
+
+    private val _navigateToSelectedCrypto = MutableLiveData<CryptoItem>()
+
+    val navigateToSelectedCrypto: LiveData<CryptoItem>
+        get() = _navigateToSelectedCrypto
+
+
     private var viewModelJob = Job()
 
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
@@ -48,6 +56,14 @@ class OverviewViewModel : ViewModel() {
             }
         }
 
+    }
+
+    fun displayCryptoDetails(cryptoItem: CryptoItem) {
+        _navigateToSelectedCrypto.value = cryptoItem
+    }
+
+    fun displayCryptoDetailsComplete() {
+        _navigateToSelectedCrypto.value = null
     }
 
     override fun onCleared() {

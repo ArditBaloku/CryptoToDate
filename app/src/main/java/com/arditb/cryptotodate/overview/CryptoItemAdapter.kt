@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.arditb.cryptotodate.databinding.CryptoItemBinding
 import com.arditb.cryptotodate.network.CryptoItem
 
-class CryptoItemAdapter : ListAdapter<CryptoItem, CryptoItemAdapter.CryptoItemViewHolder>(DiffCallback) {
+class CryptoItemAdapter(private val onClickListener: OnClickListener) :
+    ListAdapter<CryptoItem, CryptoItemAdapter.CryptoItemViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CryptoItemViewHolder {
         return CryptoItemViewHolder(CryptoItemBinding.inflate(LayoutInflater.from(parent.context)))
@@ -17,6 +18,9 @@ class CryptoItemAdapter : ListAdapter<CryptoItem, CryptoItemAdapter.CryptoItemVi
 
     override fun onBindViewHolder(holder: CryptoItemViewHolder, position: Int) {
         val cryptoItem = getItem(position)
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(cryptoItem)
+        }
         holder.bind(cryptoItem)
     }
 
@@ -31,11 +35,16 @@ class CryptoItemAdapter : ListAdapter<CryptoItem, CryptoItemAdapter.CryptoItemVi
         }
     }
 
-    class CryptoItemViewHolder(private var binding: CryptoItemBinding ) : RecyclerView.ViewHolder(binding.root) {
+    class CryptoItemViewHolder(private var binding: CryptoItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(cryptoItem: CryptoItem) {
             binding.crypto = cryptoItem
             binding.executePendingBindings()
         }
+    }
+
+    class OnClickListener(val clickListener: (cryptoItem: CryptoItem) -> Unit) {
+        fun onClick(cryptoItem: CryptoItem) = clickListener(cryptoItem)
     }
 }
 
