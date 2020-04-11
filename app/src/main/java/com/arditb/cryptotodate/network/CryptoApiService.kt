@@ -10,6 +10,11 @@ import retrofit2.http.GET
 
 private const val BASE_URL = "https://api.nomics.com/v1/"
 private const val API_KEY = "4cf16806da94f462462ce5f1b7e598b2"
+private const val CRYPTO_IDS = "BTC,ETH,XRP,USDT,BCH,BSV,LTC,EOS,BNB,ETNX,XTZ,OKB,LINK,ADA,LEOTOKEN,XLM,XMR," +
+                               "HT,TRX,CRO,DASH,USDC,ETC,NEO,IOT,ATOM,ZEC,XEM,MKR,ONT,PAX,DOGE,BAT,VET,BTG," +
+                               "TUSD,DCR,LSK,QTUM,ALGO,HBAR,ICX,REP,ZRX,WAVES,RVN,BCD,BTM,MONA,GT,KNC,DGB,ENJ," +
+                               "DAI,MCO,THETA,OMG,GRPH,NMR,KCS,NANO,FTXTOKEN,KMD,XAUT,DX,SNX,QC,NEXO,SNT,DGD,NRG," +
+                               "HOT,SC,BLOCKSTACK,STEEM,TKX,VSYS,SEELE,ZEN,BITTORRENT,BTS,CETH,BCN,HC,SXP,EURT,QNT,REN,XVG"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -22,7 +27,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface CryptoApiService {
-    @GET("currencies/ticker?key=${API_KEY}&ids=BTC,ETH,XRP,USDT,BCH,BSV,LTC,EOS,BNB,ETNX,XTZ,OKB,LINK,ADA,LEOTOKEN,XLM,XMR&interval=1d,30d&convert=EUR")
+    @GET("currencies/ticker?key=${API_KEY}&ids=${CRYPTO_IDS}&interval=1d,30d&convert=EUR")
     fun getCurrencies():  Deferred<List<CryptoItem>>
 }
 

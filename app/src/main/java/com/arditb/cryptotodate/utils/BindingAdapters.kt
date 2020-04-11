@@ -9,17 +9,27 @@ import com.arditb.cryptotodate.R
 import com.arditb.cryptotodate.network.CryptoItem
 import com.arditb.cryptotodate.overview.CryptoApiStatus
 import com.arditb.cryptotodate.overview.CryptoItemAdapter
+import com.bumptech.glide.Glide
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
 
 
 @BindingAdapter("imageUrl")
 fun bindImage(imageView: ImageView, imageUrl: String?) {
     imageUrl?.let {
-        GlideToVectorYou
-            .init()
-            .with(imageView.context)
-            .setPlaceHolder(R.drawable.loading_animation, R.drawable.ic_broken_image)
-            .load(Uri.parse(imageUrl), imageView)
+        if (imageUrl.endsWith(".svg")) {
+            GlideToVectorYou
+                .init()
+                .with(imageView.context)
+                .setPlaceHolder(R.drawable.loading_animation, R.drawable.ic_broken_image)
+                .load(Uri.parse(imageUrl), imageView)
+        } else {
+            Glide
+                .with(imageView.context)
+                .load(imageUrl)
+                .placeholder(R.drawable.loading_animation)
+                .error(R.drawable.ic_broken_image)
+                .into(imageView)
+        }
     }
 }
 
