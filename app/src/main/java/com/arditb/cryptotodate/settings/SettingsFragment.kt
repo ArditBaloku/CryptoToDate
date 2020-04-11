@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 
 import com.arditb.cryptotodate.R
+import com.arditb.cryptotodate.utils.getIndex
 import kotlinx.android.synthetic.main.fragment_settings.*
 import kotlinx.android.synthetic.main.fragment_settings.view.*
 import kotlinx.android.synthetic.main.fragment_settings.view.currenciesSpinner
@@ -103,12 +104,4 @@ class SettingsFragment : Fragment(){
         return currency
     }
 
-    private fun getIndex(spinner: Spinner, myString: String): Int {
-        for (i in 0 until spinner.count) {
-            if (spinner.getItemAtPosition(i).toString().equals(myString, ignoreCase = true)) {
-                return i
-            }
-        }
-        return 0
-    }
  }
