@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Spinner
 
 import com.arditb.cryptotodate.R
 import kotlinx.android.synthetic.main.fragment_settings.*
@@ -37,13 +38,17 @@ class SettingsFragment : Fragment(){
                 currenciesSpinner.adapter = adapter
             }
 
+        currenciesSpinner.setSelection(getIndex(currenciesSpinner, getSavedCurrency()))
+
+
         currenciesSpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                resultSpinner.text = currenciesSpinner.getItemAtPosition(0).toString()
+                resultSpinner.text = getSavedCurrency()
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                resultSpinner.text = currenciesSpinner.getItemAtPosition(position).toString()
+                saveCurrency(currenciesSpinner.getItemAtPosition(position).toString())
+                resultSpinner.text = getSavedCurrency()
             }
         }
 
@@ -55,15 +60,55 @@ class SettingsFragment : Fragment(){
                 languagesSpinner.adapter = adapter
             }
 
+        languagesSpinner.setSelection(getIndex(languagesSpinner, getSavedLanguage()))
+
         languagesSpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                resultLanguages.text = languagesSpinner.getItemAtPosition(0).toString()
+                resultLanguages.text = getSavedLanguage()
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                resultLanguages.text = languagesSpinner.getItemAtPosition(position).toString()
+                saveLanguage(languagesSpinner.getItemAtPosition(position).toString())
+                resultLanguages.text = getSavedLanguage()
             }
         }
         return view
+    }
+
+    private fun saveLanguage(newLanguage: String) {
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        with (sharedPref.edit()) {
+            putString(getString(R.string.language_key), newLanguage)
+            commit()
+        }
+    }
+
+    private fun saveCurrency(newCurrency: String) {
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        with (sharedPref.edit()) {
+            putString(getString(R.string.currency_key), newCurrency)
+            commit()
+        }
+    }
+
+    private fun getSavedLanguage(): String {
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return "EN"
+        return sharedPref.getString(getString(R.string.language_key), "EN") ?: "EN"
+    }
+
+
+    private fun getSavedCurrency(): String {
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return "USD"
+        val currency = sharedPref.getString(getString(R.string.currency_key), "USD") ?: "USD"
+        return currency
+    }
+
+    private fun getIndex(spinner: Spinner, myString: String): Int {
+        for (i in 0 until spinner.count) {
+            if (spinner.getItemAtPosition(i).toString().equals(myString, ignoreCase = true)) {
+                return i
+            }
+        }
+        return 0
     }
  }

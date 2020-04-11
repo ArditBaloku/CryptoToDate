@@ -22,4 +22,6 @@
     </string-array>
     <string name="price">%.2f</string>
     <string name="hello_converter">Hello converter</string>
+    <string name="language_key">Language Key</string>
+    <string name="currency_key">Currency Key</string>
 </resources>
