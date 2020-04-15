@@ -11,7 +11,7 @@
         android:icon="@drawable/ic_autorenew_black_24dp"/>
 
     <item
-        android:id="@+id/other"
+        android:id="@+id/otherFragment"
         android:title="Other"
         android:icon="@drawable/ic_dashboard_black_24dp"/>
 

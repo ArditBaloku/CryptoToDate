@@ -35,4 +35,9 @@
         android:name="com.arditb.cryptotodate.converter.ConverterFragment"
         android:label="fragment_converter"
         tools:layout="@layout/fragment_converter" />
+    <fragment
+        android:id="@+id/otherFragment"
+        android:name="com.arditb.cryptotodate.other.OtherFragment"
+        android:label="fragment_other"
+        tools:layout="@layout/fragment_other" />
 </navigation>
