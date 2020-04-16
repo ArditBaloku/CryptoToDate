@@ -77,7 +77,7 @@ class SettingsFragment : Fragment(){
     }
 
     private fun saveLanguage(newLanguage: String) {
-        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        val sharedPref = activity?.getSharedPreferences("CryptoToDateSettings", Context.MODE_PRIVATE) ?: return
         with (sharedPref.edit()) {
             putString(getString(R.string.language_key), newLanguage)
             commit()
@@ -85,7 +85,7 @@ class SettingsFragment : Fragment(){
     }
 
     private fun saveCurrency(newCurrency: String) {
-        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        val sharedPref = activity?.getSharedPreferences("CryptoToDateSettings", Context.MODE_PRIVATE) ?: return
         with (sharedPref.edit()) {
             putString(getString(R.string.currency_key), newCurrency)
             commit()
@@ -93,13 +93,13 @@ class SettingsFragment : Fragment(){
     }
 
     private fun getSavedLanguage(): String {
-        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return "EN"
+        val sharedPref = activity?.getSharedPreferences("CryptoToDateSettings", Context.MODE_PRIVATE) ?: return "EN"
         return sharedPref.getString(getString(R.string.language_key), "EN") ?: "EN"
     }
 
 
     private fun getSavedCurrency(): String {
-        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return "USD"
+        val sharedPref = activity?.getSharedPreferences("CryptoToDateSettings", Context.MODE_PRIVATE) ?: return "USD"
         return sharedPref.getString(getString(R.string.currency_key), "USD") ?: "USD"
     }
 

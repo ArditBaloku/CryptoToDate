@@ -7,6 +7,7 @@ import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 private const val BASE_URL = "https://api.nomics.com/v1/"
 private const val API_KEY = "4cf16806da94f462462ce5f1b7e598b2"
@@ -27,8 +28,8 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface CryptoApiService {
-    @GET("currencies/ticker?key=${API_KEY}&ids=${CRYPTO_IDS}&interval=1d,30d&convert=EUR")
-    fun getCurrencies():  Deferred<List<CryptoItem>>
+    @GET("currencies/ticker")
+    fun getCurrencies(@Query("convert") currency: String, @Query("key") key: String = API_KEY, @Query("ids") id: String = CRYPTO_IDS):  Deferred<List<CryptoItem>>
 }
 
 object CryptoApi {

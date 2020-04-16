@@ -1,6 +1,7 @@
 package com.arditb.cryptotodate.overview
 
-import android.util.Log
+import android.app.Application
+import android.content.Context
 import androidx.lifecycle.*
 import com.arditb.cryptotodate.network.CryptoApi
 import com.arditb.cryptotodate.network.CryptoItem
@@ -11,7 +12,7 @@ import kotlinx.coroutines.launch
 
 enum class CryptoApiStatus { LOADING, ERROR, DONE }
 
-class OverviewViewModel : ViewModel() {
+class OverviewViewModel(application: Application) : AndroidViewModel(application) {
 
     // The internal MutableLiveData String that stores the most recent response
     private val _status = MutableLiveData<CryptoApiStatus>()
@@ -20,6 +21,7 @@ class OverviewViewModel : ViewModel() {
     val status: LiveData<CryptoApiStatus>
         get() = _status
 
+    private val sharedPref = application.getSharedPreferences("CryptoToDateSettings", Context.MODE_PRIVATE)
 
     private val _properties = MutableLiveData<List<CryptoItem>>()
 
@@ -44,7 +46,8 @@ class OverviewViewModel : ViewModel() {
 
     private fun getCryptoData() {
         coroutineScope.launch {
-            var getCryptoDeferred = CryptoApi.retrofitService.getCurrencies()
+            val convert = sharedPref.getString("Currency Key", "USD") ?: "USD"
+            var getCryptoDeferred = CryptoApi.retrofitService.getCurrencies(convert)
             try {
                 _status.value = CryptoApiStatus.LOADING
                 val listResult = getCryptoDeferred.await()
