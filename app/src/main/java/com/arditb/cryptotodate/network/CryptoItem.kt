@@ -1,6 +1,7 @@
 package com.arditb.cryptotodate.network
 
 import android.os.Parcelable
+import com.arditb.cryptotodate.database.DatabaseCrypto
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
@@ -20,3 +21,25 @@ data class CryptoItem(
     val high: String,
     @Json(name = "high_timestamp") val highTimestamp: String
 ) : Parcelable{}
+
+
+
+fun List<CryptoItem>.asDatabaseCrypto() : List<DatabaseCrypto> {
+    return map {
+        DatabaseCrypto(
+            id = it.id,
+            currency = it.currency,
+            price = it.price,
+            priceDate = it.priceDate,
+            priceTimestamp = it.priceTimestamp,
+            symbol = it.symbol,
+            circulatingSupply = it.circulatingSupply.toDouble(),
+            name = it.name,
+            logoUrl = it.logoUrl,
+            marketCap = it.marketCap.toDouble(),
+            rank = it.rank.toInt(),
+            high = it.high.toDouble(),
+            highTimestamp = it.highTimestamp
+        )
+    }
+}
