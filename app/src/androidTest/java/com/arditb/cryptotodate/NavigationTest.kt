@@ -1,6 +1,5 @@
 package com.arditb.cryptotodate
 
-import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.action.ViewActions.click
@@ -65,7 +64,7 @@ class NavigationTest {
 
     // Check if going to settings fragment and back to overview works
     @Test
-    fun navigateToSettingsAndFragment() {
+    fun navigateToSettingsAndBack() {
         onView(withId(R.id.settingsFragment)).perform(click())
         onView(withId(R.id.settings_layout)).check(matches(isDisplayed()))
         pressBack()
