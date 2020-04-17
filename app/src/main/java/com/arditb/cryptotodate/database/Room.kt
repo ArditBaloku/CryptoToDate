@@ -1,6 +1,7 @@
 package com.arditb.cryptotodate.database
 
 import android.content.Context
+import android.provider.ContactsContract
 import androidx.lifecycle.LiveData
 import androidx.room.*
 
@@ -11,6 +12,12 @@ interface CryptoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll( cryptoCurrencies: List<DatabaseCrypto>)
+
+    @Insert
+    fun insert(crypto: DatabaseCrypto)
+
+    @Query("select * from databasecrypto")
+    fun getCryptos(): List<DatabaseCrypto>
 }
 
 @Database(entities = [DatabaseCrypto::class], version = 1)
