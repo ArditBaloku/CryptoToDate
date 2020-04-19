@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import com.arditb.cryptotodate.R
 import com.arditb.cryptotodate.databinding.FragmentConverterBinding
 import com.arditb.cryptotodate.utils.getIndex
+import kotlinx.android.synthetic.main.fragment_settings.view.*
 
 
 class ConverterFragment : Fragment() {
