@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 
-import com.arditb.cryptotodate.R
 import com.arditb.cryptotodate.databinding.FragmentDetailBinding
 
 

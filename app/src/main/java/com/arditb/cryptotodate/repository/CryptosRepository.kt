@@ -5,7 +5,6 @@ import androidx.lifecycle.Transformations
 import com.arditb.cryptotodate.database.CryptosDatabase
 import com.arditb.cryptotodate.database.asCryptoItem
 import com.arditb.cryptotodate.network.CryptoApi
-import com.arditb.cryptotodate.network.CryptoApiService
 import com.arditb.cryptotodate.network.CryptoItem
 import com.arditb.cryptotodate.network.asDatabaseCrypto
 import kotlinx.coroutines.Dispatchers
