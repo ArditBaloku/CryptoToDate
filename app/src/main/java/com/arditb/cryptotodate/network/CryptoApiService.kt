@@ -15,7 +15,7 @@ private const val CRYPTO_IDS = "BTC,ETH,XRP,USDT,BCH,BSV,LTC,EOS,BNB,ETNX,XTZ,OK
                                "HT,TRX,CRO,DASH,USDC,ETC,NEO,IOT,ATOM,ZEC,XEM,MKR,ONT,PAX,DOGE,BAT,VET,BTG," +
                                "TUSD,DCR,LSK,QTUM,ALGO,HBAR,ICX,REP,ZRX,WAVES,RVN,BCD,BTM,MONA,GT,KNC,DGB,ENJ," +
                                "DAI,MCO,THETA,OMG,GRPH,NMR,KCS,NANO,FTXTOKEN,KMD,XAUT,DX,SNX,QC,NEXO,SNT,DGD,NRG," +
-                               "HOT,SC,BLOCKSTACK,STEEM,TKX,VSYS,SEELE,ZEN,BITTORRENT,BTS,CETH,BCN,HC,SXP,EURT,QNT,REN,XVG"
+                               "HOT,SC,BLOCKSTACK,STEEM,TKX,VSYS,SEELE,ZEN,BITTORRENT,BTS,CETH,BCN,HC,SXP,EURT,QNT,REN,XVG";
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
