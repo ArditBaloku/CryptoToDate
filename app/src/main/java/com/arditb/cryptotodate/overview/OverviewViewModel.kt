@@ -16,10 +16,14 @@ enum class CryptoApiStatus { LOADING, ERROR, DONE }
 
 class OverviewViewModel(application: Application) : AndroidViewModel(application) {
 
+    // Repository for managing different data sources
     private val cryptosRepository = CryptosRepository(getDatabase(application))
+
+    // Reference to repository data
     val cryptos = cryptosRepository.cryptos
 
     private var viewModelJob = Job()
+
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     private val sharedPref = application.getSharedPreferences("CryptoToDateSettings", Context.MODE_PRIVATE)
@@ -45,11 +49,11 @@ class OverviewViewModel(application: Application) : AndroidViewModel(application
         val convert = sharedPref.getString("Currency Key", "USD") ?: "USD"
         coroutineScope.launch {
             try {
-                _status.value = CryptoApiStatus.LOADING
                 cryptosRepository.refreshCryptos(convert)
                 _status.value = CryptoApiStatus.DONE
             } catch (networkError: IOException) {
-                _status.value = CryptoApiStatus.ERROR
+                if (cryptos.value.isNullOrEmpty())
+                    _status.value = CryptoApiStatus.ERROR
             }
         }
     }
