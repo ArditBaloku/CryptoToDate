@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
-import com.arditb.cryptotodate.R
 
 
 import com.arditb.cryptotodate.databinding.FragmentOverviewBinding
