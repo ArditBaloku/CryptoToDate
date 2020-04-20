@@ -49,7 +49,8 @@ class OverviewViewModel(application: Application) : AndroidViewModel(application
                 cryptosRepository.refreshCryptos(convert)
                 _status.value = CryptoApiStatus.DONE
             } catch (networkError: IOException) {
-                _status.value = CryptoApiStatus.ERROR
+                if (cryptos.value.isNullOrEmpty())
+                    _status.value = CryptoApiStatus.ERROR
             }
         }
     }
