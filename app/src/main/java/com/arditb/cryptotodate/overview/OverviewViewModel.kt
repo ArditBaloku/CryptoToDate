@@ -16,26 +16,25 @@ enum class CryptoApiStatus { LOADING, ERROR, DONE }
 
 class OverviewViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val sharedPref = application.getSharedPreferences("CryptoToDateSettings", Context.MODE_PRIVATE)
+    // Repository for managing different data sources
+    private val cryptosRepository = CryptosRepository(getDatabase(application))
+
+    // Reference to repository data
+    val cryptos = cryptosRepository.cryptos
 
     private var viewModelJob = Job()
 
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
+    private val sharedPref = application.getSharedPreferences("CryptoToDateSettings", Context.MODE_PRIVATE)
 
-    // Repository for managing data sources
-    private val cryptosRepository = CryptosRepository(getDatabase(application))
 
-    // Crypto Items
-    val cryptos = cryptosRepository.cryptos
 
-    // Navigation data
     private val _navigateToSelectedCrypto = MutableLiveData<CryptoItem>()
 
     val navigateToSelectedCrypto: LiveData<CryptoItem>
         get() = _navigateToSelectedCrypto
 
-    // Api status
     private val _status = MutableLiveData<CryptoApiStatus>()
 
     val status: LiveData<CryptoApiStatus>
