@@ -44,12 +44,10 @@ class SettingsFragment : Fragment(){
 
         currenciesSpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                resultSpinner.text = getSavedCurrency()
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 saveCurrency(currenciesSpinner.getItemAtPosition(position).toString())
-                resultSpinner.text = getSavedCurrency()
             }
         }
 
@@ -65,12 +63,10 @@ class SettingsFragment : Fragment(){
 
         languagesSpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                resultLanguages.text = getSavedLanguage()
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 saveLanguage(languagesSpinner.getItemAtPosition(position).toString())
-                resultLanguages.text = getSavedLanguage()
             }
         }
         return view

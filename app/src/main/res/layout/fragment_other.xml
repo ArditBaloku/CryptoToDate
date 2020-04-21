@@ -8,7 +8,12 @@
     android:layout_marginTop="20dp"
     tools:context=".other.OtherFragment">
 
-
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginBottom="15dp"
+    android:text="The photo will be displayed during the night"/>
     <Button
         android:id="@+id/btnVibrate"
         android:text="Touch to vibrate"
