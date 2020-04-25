@@ -19,16 +19,34 @@ class OverviewViewModel(application: Application) : AndroidViewModel(application
     // Repository for managing different data sources
     private val cryptosRepository = CryptosRepository(getDatabase(application))
 
+    var nameText = MutableLiveData("")
+
     // Reference to repository data
-    val cryptos = cryptosRepository.cryptos
+    val cryptos = Transformations.switchMap(nameText) {
+        if (it.isEmpty())
+        {
+            cryptosRepository.cryptos
+        } else {
+//            cryptosRepository
+            cryptosRepository.filteredCryptos("%$it%")
+        }
+    }
+
+    val filteredCryptos = Transformations.switchMap(nameText) {
+        if (it.isEmpty())
+        {
+            cryptos
+        } else {
+//            cryptosRepository
+            cryptos
+        }
+    }
 
     private var viewModelJob = Job()
 
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     private val sharedPref = application.getSharedPreferences("CryptoToDateSettings", Context.MODE_PRIVATE)
-
-
 
     private val _navigateToSelectedCrypto = MutableLiveData<CryptoItem>()
 

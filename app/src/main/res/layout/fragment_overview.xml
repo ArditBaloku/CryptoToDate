@@ -35,6 +35,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/preNameAdd"
+                    android:text="@={viewModel.nameText}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
 

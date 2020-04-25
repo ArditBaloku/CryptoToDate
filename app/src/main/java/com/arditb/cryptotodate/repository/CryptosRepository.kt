@@ -17,6 +17,12 @@ class CryptosRepository (private val database: CryptosDatabase) {
         it.asCryptoItem()
     }
 
+    fun filteredCryptos(name: String): LiveData<List<CryptoItem>> {
+        return Transformations.map(database.cryptoDao.getFilteredCryptos(name)) {
+            it.asCryptoItem()
+        }
+    }
+
     suspend fun refreshCryptos(convert: String) {
         withContext(Dispatchers.IO){
             val data = CryptoApi.retrofitService.getCurrencies(convert).await()
