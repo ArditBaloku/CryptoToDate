@@ -10,6 +10,9 @@ interface CryptoDao {
     @Query("select * from databasecrypto")
     fun getCryptoCurrencies(): LiveData<List<DatabaseCrypto>>
 
+    @Query("select * from databasecrypto where id=:id")
+    fun getCryptoById(id: String): DatabaseCrypto
+
     @Query("select * from databasecrypto where name like :name")
     fun getFilteredCryptos(name: String): LiveData<List<DatabaseCrypto>>
 
