@@ -23,7 +23,7 @@ class CryptosRepository (private val database: CryptosDatabase) {
         }
     }
 
-    suspend fun refreshCryptos(convert: String) {
+    suspend fun refreshCryptos(convert: String = "USD") {
         withContext(Dispatchers.IO){
             val data = CryptoApi.retrofitService.getCurrencies(convert).await()
             database.cryptoDao.insertAll(data.asDatabaseCrypto())
