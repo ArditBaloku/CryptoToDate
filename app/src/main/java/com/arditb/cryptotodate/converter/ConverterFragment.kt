@@ -38,6 +38,7 @@ class ConverterFragment : Fragment() {
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 currencies_to.adapter = adapter
             }
+        currencies_to.setSelection(1)
         binding.swapCurrencies.setOnClickListener{
             val first = currencies_from.selectedItem.toString()
             currencies_from.setSelection(getIndex(currencies_from, currencies_to.selectedItem.toString()))

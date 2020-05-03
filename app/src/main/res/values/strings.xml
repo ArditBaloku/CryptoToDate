@@ -1,9 +1,8 @@
 <resources>
     <string name="app_name">CryptoToDate</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string-array name="currencies">
+        <item>USD</item>
+        <item>EUR</item>
         <item>AED</item>
         <item>AFN</item>
         <item>ALL</item>
@@ -12,8 +11,6 @@
         <item>AUD</item>
         <item>AOA</item>
         <item>ARS</item>
-        <item>USD</item>
-        <item>EUR</item>
     </string-array>
     <string-array name="languages">
         <item>EN</item>
@@ -119,4 +116,22 @@
     <string name="langSettings">Language:</string>
     <string name="currencySettings">Currency:</string>
     <string name="darkSettings">Dark Theme:</string>
+    <string name="amount">Amount</string>
+    <string name="result">Result</string>
+    <string name="convertBtn">Convert</string>
+    <string name="swapBtn">Swap Button</string>
+    <string name="cryptoImage">Crypto Image</string>
+    <string name="name">Name:</string>
+    <string name="id">Id:</string>
+    <string name="priceTimestamp">Price timestamp:</string>
+    <string name="high">High:</string>
+    <string name="highTimestamp">High timestamp:</string>
+    <string name="symbol">Symbol:</string>
+    <string name="circulating_supply">Circulating Supply:</string>
+    <string name="marketCap">Market Cap:</string>
+    <string name="price_date">Price Date:</string>
+    <string name="rank">Rank:</string>
+    <string name="priceTxt">Price:</string>
+    <string name="search">Search</string>
+    <string name="status_image">Status Image</string>
 </resources>
