@@ -116,4 +116,7 @@
     <string name="hello_converter">Hello converter</string>
     <string name="language_key">Language Key</string>
     <string name="currency_key">Currency Key</string>
+    <string name="langSettings">Language:</string>
+    <string name="currencySettings">Currency:</string>
+    <string name="darkSettings">Dark Theme:</string>
 </resources>
