@@ -18,7 +18,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -98,4 +98,10 @@ dependencies {
 
     // Gif photos
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.1.17'
+
+    // Multidex
+    implementation 'com.android.support:multidex:1.0.3'
+
+    // WorkManager dependency
+    implementation "android.arch.work:work-runtime-ktx:$work_version"
 }
