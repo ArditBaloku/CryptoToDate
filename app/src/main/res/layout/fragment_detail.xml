@@ -81,7 +81,7 @@
                 android:layout_weight="3"
                 android:textSize="15sp"
                 android:layout_marginBottom="5dp"
-                android:text="Price"/>
+                android:text="@string/price_date"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -115,7 +115,7 @@
                 android:layout_weight="3"
                 android:textSize="15sp"
                 android:layout_marginBottom="5dp"
-                android:text="Market Cap"/>
+                android:text="@string/marketCap"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -154,7 +154,7 @@
                 android:layout_weight="3"
                 android:textSize="15sp"
                 android:layout_marginBottom="5dp"
-                android:text="Circulating supply"/>
+                android:text="@string/circulating_supply"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -187,7 +187,7 @@
                 android:layout_weight="3"
                 android:textSize="15sp"
                 android:layout_marginBottom="5dp"
-                android:text="Highest"/>
+                android:text="@string/highest"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
